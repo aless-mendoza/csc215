@@ -37,3 +37,8 @@ A logic statement is either **true** :thumbsup: or **false** :thumbsdown: <br>
 |-----|----------|
 |  1  |    0     |
 |  0  |    1     |                 
+
+<br>
+:cherry_blossom: Bonus emojis :cherry_blossom: <br>
+:shipit: :hurtrealbad:
+
