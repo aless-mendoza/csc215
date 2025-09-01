@@ -1,7 +1,6 @@
 # Altair 8800 Part 1
 
 <br>
----
 <br>
 
 ## Introduction & Logic
@@ -47,12 +46,31 @@ A logic statement is either **true** :thumbsup: or **false** :thumbsdown: <br>
 |  0  |    1     |                 
 
 <br>
----
 <br>
 
 ## Electronic Logic
 
 ### Basic Logic Functions - AND, OR, NOT
 ![LogicCircuit](images/LogicCircuitDiagram.png)
+
+### Combination Logic - NAND, NOR, XOR
+#### NAND is the combination of AND + NOT
+|  A  |  B  |  Output  |
+|-----|-----|----------|
+|  1  |  1  |    0     |
+|  1  |  0  |    1     |
+|  0  |  1  |    1     |
+|  0  |  0  |    1     |
+
+#### NOT is OR + NOT
+|  A  |  B  |  Output  |
+|-----|-----|----------|
+|  1  |  1  |    0     |
+|  1  |  0  |    0     |
+|  0  |  1  |    0     |
+|  0  |  0  |    1     |
+
+![CombinationLogicCircuit](images/CombinationLogicDiagram.png)
+
 
 
