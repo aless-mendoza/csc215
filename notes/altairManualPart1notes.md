@@ -1,7 +1,6 @@
 # Altair 8800 Part 1
 
-<br>
-<br>
+---
 
 ## Introduction & Logic
 ### :sparkles: *The Mathematical Analysis of Logic* by George Boole :sparkles:<br>
@@ -45,8 +44,7 @@ A logic statement is either **true** :thumbsup: or **false** :thumbsdown: <br>
 |  1  |    0     |
 |  0  |    1     |                 
 
-<br>
-<br>
+---
 
 ## Electronic Logic
 
@@ -82,6 +80,8 @@ A logic statement is either **true** :thumbsup: or **false** :thumbsdown: <br>
 
 ![XOR](images/XORDiagram.png)
 
+---
+
 ## Number Systems
 - The Altair 8800 uses a positional numeral system in *base-2*
 - For engineering and mathematical reasons, most computers are binary digital computers meaning they operate on bits
@@ -112,6 +112,8 @@ A logic statement is either **true** :thumbsup: or **false** :thumbsdown: <br>
 | 1101   | 13      | D |
 | 1110   | 14      | E |
 | 1111   | 15      | F |
+
+---
 
 ## Binary
 - The Altair 8800 preforms nearly all operations in binary
