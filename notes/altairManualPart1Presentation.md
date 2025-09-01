@@ -9,6 +9,7 @@
 ### $${\color{blue}Boolean \space Algebra}$$<br>
 Boolean expressions are the expressions that evaluate a condition and result in a Boolean value<br>
 A logic statement is either **true** :thumbsup: or **false** :thumbsdown: <br>
+- true is represented with a 1 and false is represented with a 0
 - there are no maybes :x: :x:
 <br><br>
 
