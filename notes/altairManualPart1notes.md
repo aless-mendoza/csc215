@@ -1,7 +1,9 @@
 # Altair 8800 Part 1
+
 <br>
 ---
 <br>
+
 ## Introduction & Logic
 ### :sparkles: *The Mathematical Analysis of Logic* by George Boole :sparkles:<br>
 - showed how logic can be analyzed using simple arithmatic<br>
@@ -43,9 +45,11 @@ A logic statement is either **true** :thumbsup: or **false** :thumbsdown: <br>
 |-----|----------|
 |  1  |    0     |
 |  0  |    1     |                 
+
 <br>
 ---
 <br>
+
 ## Electronic Logic
 
 ### Basic Logic Functions - AND, OR, NOT
