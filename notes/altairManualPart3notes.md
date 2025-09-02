@@ -109,8 +109,13 @@ etc
 
 
 ## $${\color{blue}Using \space The \space Memory}$$
+- unlike higher level compilers which include software packages to track memory, **in machine language the programmer needs to keep track of memory**
+- **memory mapping:** The technique assigns various types of data to certain blocks of memory reserved for a specific purpose
+    - keep track of it in a table
+    - assign programs then subroutines then data
 
 
+## $${\color{blue}Memory \space Addressing}$$
 
 
 ## $${\color{blue}Vocab}$$
