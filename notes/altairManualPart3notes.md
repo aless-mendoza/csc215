@@ -117,16 +117,23 @@ etc
 ---
 
 ## $${\color{blue}Memory \space Addressing}$$
-- **Direct Addressing:** The instruction supplies the supplies the specified memory address in the form of two bytes immediately after the actual instruction byte
-- **Register Pair Addressing:** The contents of a register pair can contain a memory address. **H** (high) contains the most sig. 8 bits. **L** (low) contains the least sig. 8 bits. Two instructions (STAX and LDAX) permit the **B and C** or **D and E** register pairs to contain memory addresses.
-- **Stack Pointer Addressing:** **PUSH**ing data onto the stack causes two bytes of data to be stored in a special block of memory reserved by the programmer called the stack. **POP**ing data from the stack causes this data to be retrieved. For now it is important to know that **the programmer must reserve the stack location in memory by loading a memory address into the Stack Pointer.**
-- **Immediate Addressing:** contain data which is loaded into memory during program loading. Since the data is loaded along with the program in a sequential fashion, it is stored in the block of memory reserved for programming by the operator. There is no need to make any changes to the memory map when loading immediate data.
+- **Direct Addressing:** The instruction supplies the supplies the specifiedrmemory address in the form of two bytes immediately after actual instruction byte <br>
+- **Register Pair Addressing:** The contents of a register pair can contain a memory address. **H** (high) contains the most sig. 8 bits. **L** (low) contains the least sig. 8 bits. Two instructions (STAX and LDAX) permit the **B and C** or **D and E** register pairs to contain memory addresses. <br>
+- **Stack Pointer Addressing:** **PUSH**ing data onto the stack causes two bytes of data to be stored in a special block of memory reserved by the programmer called the stack. **POP**ing data from the stack causes this data to be retrieved. For now it is important to know that **the programmer must reserve the stack location in memory by loading a memory address into the Stack Pointer.** <br>
+- **Immediate Addressing:** contain data which is loaded into memory during program loading. Since the data is loaded along with the program in a sequential fashion, it is stored in the block of memory reserved for programming by the operator. There is no need to make any changes to the memory map when loading immediate data. <br>
 - **Stack Addressing of Subroutines:** When a subroutine is **CALL**ed by a program, the address of the next instruction is automatically saved by being **PUSH**ed onto the stack. When the subroutine has been run, a **RETURN** instruction **POP**s the address from the stack and the main prgram continues running
 
 ---
 
 ## $${\color{blue}Operating Hints}$$
-
+- **Proofreading Programs** 
+    - This is done by returning to the first address in memory at which the program begins (actuate RESET if the program begins at memory location 0; otherwise, set the address on the ADDRESS switches and actuate EXAMINE), Check the DATA LEDs to make sure the first program step has been correctly entered. Then actuate EXAMINE NEXT and check the second step against the DATA LEDs. 
+    - If an error is found, simply reenter the correct bit pattern on the DATA switches, actuate DEPOSIT, and continue proofreading by means of the EXAMINE NEXT switch.<br>
+- **Using NOPs**
+    - "No Operation"
+    - by scattering NOP instructions throughout a complicated program, considerable time can be saved if a program error requiring the addition of a new step or steps is found. The new instruction or data is simply entered into the program in place of the NOP instruction during the program proofreading<br>
+- **Debugging Programs**
+    - Debugging can be enhanced by use of the SINGLE STEP switch. This switch steps the computer through the program in machine cycles rather than complete program steps and permits you to observe the condition of the eight STATUS LEDs. This procedure will permit you to detect illegal entries, improper program organization, and other programming errors.
 
 ---
 
