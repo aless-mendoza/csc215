@@ -2,7 +2,7 @@
 
 ---
 
-## The Front panel and swithces and LEDs
+## $${\color{blue}The Front panel and swithces and LEDs}$$
 ### $${\color{red}Front Panel Switches}$$
 **On-Off Switches**
 - On is 1 (applies power)
@@ -78,6 +78,12 @@
 
 ---
 
-## Loading a Sample Program
+## $${\color{blue}Loading a Sample Program}$$
 
+
+
+
+## $${\color{blue}Vocab}$$
+- **Data bus:** transfers data between a computer's memory and its CPU
+- **mnemonics:** the study and development of systems for improving and assisting the memory.
 
