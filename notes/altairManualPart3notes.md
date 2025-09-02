@@ -65,5 +65,19 @@
 
 ### $${\color{red}Status LEDs}$$
 
+|  LED  |  Definition  |
+|-----|----------|
+|  **MEMR**  |   The **memory** bus will be used for memory read data    |
+|  **INP**  |   The address bus containing the address of an **input** device. The input data should be placed on the data bus when the bus is in input mode    |
+|  **M1**  |   the CPU is processing the first machine cycle of instruction   |
+|  **OUT**  |   The address contains the address of an **output** device and the data bus will contain the output data when the CPU is ready   |
+| **HLTA** | A **halt** instruction had been executed and acknowledged |
+| **STACK** | The address bus holds the **STACK POINTER's** push-down stack address|
+| **WO** | Operation in the current machine cycle will be a **WRITE** memory or **OUTPUT** function. Otherwise a **READ** memory or **INPUT** operation will occur|
+| **INT** | A **interupt** request has been acknowledged|
+
+---
+
+## Loading a Sample Program
 
 
