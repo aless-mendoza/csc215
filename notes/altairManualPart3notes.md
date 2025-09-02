@@ -2,7 +2,7 @@
 
 ---
 
-## $${\color{blue}The \space Front \space panel \space and \space swithces \space \space and \space LEDs}$$
+## $${\color{blue}The \space Front \space panel \space and \space swithces \space and \space LEDs}$$
 ### $${\color{red}Front \space Panel \space Switches}$$
 **On-Off Switches**
 - On is 1 (applies power)
@@ -114,9 +114,21 @@ etc
     - keep track of it in a table
     - assign programs then subroutines then data
 
+---
 
 ## $${\color{blue}Memory \space Addressing}$$
+- **Direct Addressing:** The instruction supplies the supplies the specified memory address in the form of two bytes immediately after the actual instruction byte
+- **Register Pair Addressing:** The contents of a register pair can contain a memory address. **H** (high) contains the most sig. 8 bits. **L** (low) contains the least sig. 8 bits. Two instructions (STAX and LDAX) permit the **B and C** or **D and E** register pairs to contain memory addresses.
+- **Stack Pointer Addressing:** **PUSH**ing data onto the stack causes two bytes of data to be stored in a special block of memory reserved by the programmer called the stack. **POP**ing data from the stack causes this data to be retrieved. For now it is important to know that **the programmer must reserve the stack location in memory by loading a memory address into the Stack Pointer.**
+- **Immediate Addressing:** contain data which is loaded into memory during program loading. Since the data is loaded along with the program in a sequential fashion, it is stored in the block of memory reserved for programming by the operator. There is no need to make any changes to the memory map when loading immediate data.
+- **Stack Addressing of Subroutines:** When a subroutine is **CALL**ed by a program, the address of the next instruction is automatically saved by being **PUSH**ed onto the stack. When the subroutine has been run, a **RETURN** instruction **POP**s the address from the stack and the main prgram continues running
 
+---
+
+## $${\color{blue}Operating Hints}$$
+
+
+---
 
 ## $${\color{blue}Vocab}$$
 - **Data bus:** transfers data between a computer's memory and its CPU
