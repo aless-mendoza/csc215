@@ -79,18 +79,30 @@
 ---
 
 ## $${\color{blue}Loading \space a \space Sample \space Program}$$
-### $${\color{red}mnemonics}$$
 
-<br>Each instruction is precise and specific. Each of the machine language instructions requires a single byte bit pattern aside from LDA and STA which require two additional bytes to provide teh necessary memory addresses.<br>
+Each instruction is precise and specific. Each of the machine language instructions requires a single byte bit pattern aside from LDA and STA which require two additional bytes to provide teh necessary memory addresses.<br>
+
+### $${\color{red}Example \space Program \space - \space a \space simple \space addition \space program}$$
+In mnemonics the program goes<br>
+0. LDA
+1. MOV (A->B)
+2. LDA
+3. ADD (A+B)
+4. STA
+5. JMP
+
+With the memory address, the program can be converted into its machine language bit patterns:<br>
 
 |  mnemonics  |  Bit Pattern  |  Explanation  |
 |-----|----------|--------|
-| **LDA**  |  00 111 010 10 000 000 00 000 000  | Load the accumulator with the contents of a specified memory address  |
+| **LDA**  |  00 111 010 10 000 000 00 000 000  | Load the accumulator with the contents of: memory address 128  |
 | **MOV (A -> B)**  |  01 000 111  | Move the contents of the accumulator into register B  |
+| **LDA**  |  00 111 010 10 000 001 00 000 000  | Load the accumulator with the contents of: memory address 129  |
 | **ADD (B + A)**  |  10 000 000  | Add the contents of register B to the contents of the accumulator and store the results in the accumulator  |
-| **STA**  |  00 110 010 10 000 010 00 000 000  |Store the contents of the accumulator in a specified memory address  |
-| **JMP**  |  11 000 011 00 000 000 00 000 000  | Jump to the first step in the program  |
+| **STA**  |  00 110 010 10 000 010 00 000 000  |Store the contents of the accumulator at: memory address 130  |
+| **JMP**  |  11 000 011 00 000 000 00 000 000  | Jump to the first step in the program (memory location 0)  |
 
+The resulting program appears as:<br>
 
 | Step |  mnemonics  |  Bit Pattern  |  Octal  |
 |------|-------------|---------------|---------|
@@ -105,7 +117,9 @@
 |8|STA|00 110 010|062|
 |9|(address)|10 000 010|202|
 |10|(address)|00 000 000|000|
-etc
+|11| JMP|11 000 011|303|
+|12|(address)|00 000 000|000|
+|13|(address)|00 000 000|000|
 
 
 ## $${\color{blue}Using \space The \space Memory}$$
