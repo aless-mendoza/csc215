@@ -2,8 +2,8 @@
 
 ---
 
-## $${\color{blue}The Front panel and swithces and LEDs}$$
-### $${\color{red}Front Panel Switches}$$
+## $${\color{blue}The \space Front \space panel \space and \space swithces \space \space and \space LEDs}$$
+### $${\color{red}Front \space Panel \space Switches}$$
 **On-Off Switches**
 - On is 1 (applies power)
 - Off cuts off power and also erases memory
@@ -52,7 +52,7 @@
 
 <br>
 
-### $${\color{red}Indicator LEDs}$$
+### $${\color{red}Indicator \space LEDs}$$
 
 |  LED  |  Definition  |
 |-----|----------|
@@ -63,7 +63,7 @@
 |  **WAIT**  |    CPU is in **WAIT** state when **LED is on**     |
 |  **HLDA**  |    A **hold** has been **acknowledged** when **LED is on**     |
 
-### $${\color{red}Status LEDs}$$
+### $${\color{red}Status \space LEDs}$$
 
 |  LED  |  Definition  |
 |-----|----------|
@@ -78,7 +78,37 @@
 
 ---
 
-## $${\color{blue}Loading a Sample Program}$$
+## $${\color{blue}Loading \space a \space Sample \space Program}$$
+### $${\color{red}mnemonics}$$
+
+<br>Each instruction is precise and specific. Each of the machine language instructions requires a single byte bit pattern aside from LDA and STA which require two additional bytes to provide teh necessary memory addresses.<br>
+
+|  mnemonics  |  Bit Pattern  |  Explanation  |
+|-----|----------|--------|
+| **LDA**  |  00 111 010 10 000 000 00 000 000  | Load the accumulator with the contents of a specified memory address  |
+| **MOV (A -> B)**  |  01 000 111  | Move the contents of the accumulator into register B  |
+| **ADD (B + A)**  |  10 000 000  | Add the contents of register B to the contents of the accumulator and store the results in the accumulator  |
+| **STA**  |  00 110 010 10 000 010 00 000 000  |Store the contents of the accumulator in a specified memory address  |
+| **JMP**  |  11 000 011 00 000 000 00 000 000  | Jump to the first step in the program  |
+
+
+| Step |  mnemonics  |  Bit Pattern  |  Octal  |
+|------|-------------|---------------|---------|
+|  0   | LDA         | 00 111 010    |  072    |
+|  1   | (address)   | 10 000 000    |  200    |
+|  2   | (address)   | 00 000 000    |  000    |
+|  3   | MOV (A->B)  | 01 000 111    |  107    |
+|  4   | LDA         | 00 111 010    |  072    |
+|5|(address)|10 000 001|201|
+|6|(address)|00 000 000|000|
+|7|ADD (B+A)|10 000 000|200|
+|8|STA|00 110 010|062|
+|9|(address)|10 000 010|202|
+|10|(address)|00 000 000|000|
+etc
+
+
+## $${\color{blue}Using \space The \space Memory}$$
 
 
 
