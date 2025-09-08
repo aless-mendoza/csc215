@@ -1,36 +1,43 @@
-# Adding 3 Numbers
+# Multiplying 8-bit Numbers
 
 | Step |  mnemonics  |  Bit Pattern  |  Hex   | Explanation |
 |------|-------------|---------------|--------|-------------|
 |  0   | LDA B       | 00 111 010    |  3A    | (multiplicand) Initiating Variable B in the A register |
 |  1   | (address)   | 10 000 000    |  30    | Showing where to pull the data from (where does B get defined) |
 |  2   | (address)   | 00 000 000    |  00    | Whole address is 0030 |
-|  0   | LDA E       | 00 111 010    |  3A    | Initiating Variable E in the A register (equal to B)|
-|  1   | (address)   | 10 000 000    |  30    | Showing where to pull the data from (where does B get defined) |
-|  2   | (address)   | 00 000 000    |  00    | Whole address is 0030 |
-|  3   | MOV (A->E)  | 01 000 111    |  47    | Move the information into register D |
 |  3   | MOV (A->B)  | 01 000 111    |  47    | Move the information into register B |
-|  4   | LDA C       | 00 111 010    |  3A    | Initiating Variable C in the A register |
-|  5   | (address)   | 10 000 001    |  40    | Showing where to pull the data from (where does C get defined) |
-|  6   | (address)   | 00 000 000    |  00    | Whole address is 0040 |
-|  7   | MOV (A->C)  | 01 000 111    |  4f    | Move the information into register C |
-|  0   | LDA D       | 00 111 010    |  3A    | (mulitplicator) Initiating Variable D in the A register |
-|  1   | (address)   | 10 000 000    |  50    | Showing where to pull the data from (where does B get defined) |
-|  2   | (address)   | 00 000 000    |  00    | Whole address is 0050 |
-|  3   | MOV (A->D)  | 01 000 111    |  47    | Move the information into register D |
-|  3   | MOV (A->A)  | 01 000 111    |  47    | **Loop starts here** |
-|  3   | SUB (D-C)   | 01 000 111    |  47    | Subtracting D from C (c = 1). This is how we decrement |
-|  3   | JZ          | 01 000 111    |  47    | If the result is zero, jump away (to a halt) |
-|  5   | (address)   | 10 000 001    |  40    | Showing where the HLT is |
-|  6   | (address)   | 00 000 000    |  00    | Whole address is 1C in the memory |
-|  3   | MOV (A->D)  | 01 000 111    |  47    |  |
-|  3   | MOV (E->A)  | 01 000 111    |  47    |  |
-|  3   | ADD (A+B)   | 01 000 111    |  47    |  |
-|  3   | MOV (A->E)  | 01 000 111    |  47    |  |
-|  3   | JMP         | 01 000 111    |  47    | Restart Loop |
-|  5   | (address)   | 10 000 001    |  40    |  |
-|  6   | (address)   | 00 000 000    |  00    | |
-|  6   | HLT         | 00 000 000    |  00    | |
+|  4   | LDA E       | 00 111 010    |  3A    | Initiating Variable E in the A register (equal to B)|
+|  5   | (address)   | 10 000 000    |  30    | Showing where to pull the data from (where does B get defined) |
+|  6   | (address)   | 00 000 000    |  00    | Whole address is 0030 |
+|  7   | MOV (A->E)  | 01 000 111    |  5F    | Move the information into register D |
+|  8   | LDA C       | 00 111 010    |  3A    | Initiating Variable C in the A register |
+|  9   | (address)   | 10 000 001    |  40    | Showing where to pull the data from (where does C get defined) |
+|  10  | (address)   | 00 000 000    |  00    | Whole address is 0040 |
+|  11  | MOV (A->C)  | 01 000 111    |  4f    | Move the information into register C |
+|  12  | LDA D       | 00 111 010    |  3A    | (mulitplicator) Initiating Variable D in the A register |
+|  13  | (address)   | 10 000 000    |  50    | Showing where to pull the data from (where does B get defined) |
+|  14  | (address)   | 00 000 000    |  00    | Whole address is 0050 |
+|  15  | MOV (A->D)  | 01 000 111    |  57    | Move the information into register D |
+|  16  | MOV (D->A)  | 01 000 111    |  7A    | **Loop starts here** |
+|  17  | SUB (D-C)   | 01 000 111    |  91    | Subtracting D from C (c = 1). This is how we decrement |
+|  18  | JZ          | 01 000 111    |  CA    | If the result is zero, jump away (to a halt) |
+|  19  | (address)   | 10 000 001    |  1C    | Showing where the HLT is |
+|  20  | (address)   | 00 000 000    |  00    | Whole address is 1C in the memory |
+|  21  | MOV (A->D)  | 01 000 111    |  57    |  |
+|  22  | MOV (E->A)  | 01 000 111    |  7B    |  |
+|  23  | ADD (A+B)   | 01 000 111    |  87    |  |
+|  24  | MOV (A->E)  | 01 000 111    |  5F    |  |
+|  25  | JMP         | 01 000 111    |  C3    | Restart Loop |
+|  26  | (address)   | 10 000 001    |  10    |  |
+|  27  | (address)   | 00 000 000    |  00    |  |
+|  28  | HLT         | 00 000 000    |  76    |  |
+
+## Mapping
+A is accumulator <br>
+B is the thing that gets added to itself<br>
+C is just 1 <br>
+D is the decrement counter <br>
+E is the product <br>
 
 ## Instructions
 1. Write in instructions above
