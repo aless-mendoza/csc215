@@ -11,7 +11,7 @@
 |  4   | LDA E       | 00 111 010    |  3A    | Initiating Variable E in the A register (equal to B)|
 |  5   | (address)   | 10 000 000    |  30    | Showing where to pull the data from (where does B get defined) |
 |  6   | (address)   | 00 000 000    |  00    | Whole address is 0030 |
-|  7   | MOV (A->E)  | 01 000 111    |  5F    | Move the information into register D |
+|  7   | MOV (A->E)  | 01 000 111    |  5F    | Move the information into register E |
 |  8   | LDA C       | 00 111 010    |  3A    | Initiating Variable C in the A register |
 |  9   | (address)   | 10 000 001    |  40    | Showing where to pull the data from (where does C get defined) |
 |  10  | (address)   | 00 000 000    |  00    | Whole address is 0040 |
@@ -27,11 +27,11 @@
 |  20  | (address)   | 00 000 000    |  00    | Whole address is 1C in the memory |
 |  21  | MOV (A->D)  | 01 000 111    |  57    | Take the difference from the subtraction and put it back in register D |
 |  22  | MOV (E->A)  | 01 000 111    |  7B    | Take the value from E (the product) and move it to accumulator |
-|  23  | ADD (E+B)   | 01 000 111    |  80    | Add E and B (multiplication is just a bunch of repeated addition) |
+|  23  | ADD (E+B)   | 01 000 000    |  80    | Add E and B (multiplication is just a bunch of repeated addition) |
 |  24  | MOV (A->E)  | 01 000 111    |  5F    | Put the product back into register E |
 |  25  | JMP         | 01 000 111    |  C3    | Restart Loop |
-|  26  | (address)   | 10 000 001    |  10    | Showing where HLT is |
-|  27  | (address)   | 00 000 000    |  00    | Whole address is 1C in the memory |
+|  26  | (address)   | 10 000 001    |  10    | Showing where the loop restarts |
+|  27  | (address)   | 00 000 000    |  00    | Whole address is 0010 |
 |  28  | HLT         | 00 000 000    |  76    | End program |
 
 ## Mapping
