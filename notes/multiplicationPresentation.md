@@ -53,5 +53,5 @@ E is the product <br>
 5. Toggle reset
 6. Toggle run
 7. Toggle stop
-8. See output in location 0050
+8. See output in register E
 
