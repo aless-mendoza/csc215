@@ -5,10 +5,10 @@
 1. Download [the enviorment here](images/CPM_Altair8800_WinMacLin.tgz)
 2. Move the file into your repo
 3. Unzip the file
-    *if you're on a school mac* run this line in your terminal where the file is: xattr -d com.apple.quarantine altair8800mac
+    - *if you're on a school mac* run this line in your terminal where the file is: xattr -d com.apple.quarantine altair8800mac
 4. You can use "ls" to view the files, there should be several labeled "altair8800"...
 5. using "rm" remove the files that aren't your computer type
-    *if you're on a school mac* you would delete everything aside from "altair8800mac"
+    - *if you're on a school mac* you would delete everything aside from "altair8800mac"
 6. use "./altair8800 cpm" to open the enviorment
 
 ---
