@@ -17,22 +17,38 @@
 
 ### The text book gives the following code;
 
-A> **DDTcr** \n
-DDT VERS 1.4 \n
--**S100cr** \n
-0100 01 **0Ecr** \n
-0101 B6 **02cr** \n
-0102 OF **1Ecr** \n
-0103 C3 **24cr** \n
-0104 3D **CDcr** \n
-0105 01 **05cr** \n
-0106 43 **00cr** \n
-0107 4F **C3cr** \n
-0108 50 **00cr** \n
-0109 59 **00cr** \n
-010A 52 **.cr** \n
--**G100cr** \n
-$ \n
+A> **DDTcr**
+
+DDT VERS 1.4
+
+-**S100cr**
+
+0100 01 **0Ecr**
+
+0101 B6 **02cr**
+
+0102 OF **1Ecr**
+
+0103 C3 **24cr**
+
+0104 3D **CDcr** 
+
+0105 01 **05cr**
+
+0106 43 **00cr**
+
+0107 4F **C3cr**
+
+0108 50 **00cr**
+
+0109 59 **00cr**
+
+010A 52 **.cr**
+
+-**G100cr**
+
+$ 
+
 A>
 
 - When inputing this into your terminal, know that "cr" means return. So, when typing this in you press the "return" key on your computer instead
