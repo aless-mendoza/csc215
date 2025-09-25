@@ -39,5 +39,5 @@ A>
 - The output is the "$"
 
 ### This is what it should look like from a school computer terminal
-[output image](images/outputImage.png)
+![output image](images/outputImage.png)
 
