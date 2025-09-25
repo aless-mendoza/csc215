@@ -39,5 +39,5 @@ A>
 - The output is the "$"
 
 ### This is what it should look like from a school computer terminal
-![output image](images/Screenshot 2025-09-25 at 10.10.52 AM.png)
+[output image](images/outputImage.png)
 
