@@ -103,3 +103,51 @@
 - **PIP** → Peripheral Interchange Program (file copy utility) 
 - **CTRL** → Control key on keyboard 
 
+## Jake
+
+### Chapter 3
+
+#### Ports - logical devices
+- logical devices (ports)
+    - CON: - terminal (monitor and keyboard)
+    - LST: - list device (line printer)
+    - RDR: - general input
+    - PUN: - general output
+    - A: / B: / C: / etc - Disk drive
+- Each port can have 4 decives hooked up & can be toggled with a byte (IOBYT)
+- If a physical device has an input and an output in needs to be hooked up to the general input & output
+- The only bidirectional port in CON:
+
+#### Physical Devices
+- Devices
+    - CRT: - old kind of monitor
+    - LPT: - Line printer
+    - PTR: - Paper Tape Reader
+    - PTP: - Paper Tape Punch
+
+### Chapter 4
+
+#### Files
+- A file in a computer is like one in a file cabinet. It can contain just about any sort of information, right or wrong, and the contents of a file can be identified by a label.
+- Files can have a max of 8 characters for name and 3 characters for file extensions
+    - file extension is the .whatever (.png, .pdf)
+- DIR does same thing as ls
+- .asm - assembly source program
+    - like .py - where code is
+- .com - the executable
+    - you can just run it and it do things
+
+#### Stuff and wild cards
+- Name your disk responsibly 
+- and * is a wild card
+    - it fills in the blank
+    - DIR \*.com gives every file with .com extension
+- PIP - how you write things to the logical devices
+    - how you send things
+- PIP B:=A:\*.\*
+    - copies everything from A into B
+
+#### Line editing
+- sometimes when you hit the delete or backslash key, it doesn't always delete, it just repeats the key to signify that it was deleted (does get deleted but doesn't display that way)
+- CTRL + R - view command line
+- CTRL + U/X - same as CTRL + C (resets line, aborts your entry)
