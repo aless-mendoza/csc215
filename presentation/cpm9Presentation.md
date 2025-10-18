@@ -26,7 +26,7 @@
 - **BC, DE, HL** → Can form 16-bit registers for indexing or addressing memory.  
 - **SP (Stack Pointer)** and **PC (Program Counter)** → Used for memory addressing only.
 
-(registerImage)[images/register.png]
+![registerImage](images/register.png)
 ---
 
 ##  Register Address Codes (Table 9-1)
