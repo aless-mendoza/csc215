@@ -51,21 +51,6 @@
 
 ---
 
-###  Example: Calendar Clock Program
-
-Each time unit (seconds, minutes, hours, etc.) is stored in separate memory locations.
-
-**Process:**
-1. Load HL with the address of the seconds counter (first M register).  
-2. Increment seconds.  
-3. If seconds = 10 → reset and increment HL (move to tens of seconds).  
-4. Repeat for minutes, hours, days, and years.
-
-**Why it matters:**  
-The M register allows direct operations on memory without loading data into A first—ideal for tasks like clocks or tables.
-
----
-
 ##  Stack Operations
 
 - The **stack** is a memory area managed by the **Stack Pointer (SP)**.  
@@ -76,18 +61,4 @@ The M register allows direct operations on memory without loading data into A fi
 
  The stack grows **downward** in memory (SP decrements).  
 Operates as **LIFO (Last In, First Out)**.
-
----
-
-###  Example: Using the Stack to Free Registers
-
-```asm
-PUSH B       ; Save BC pair
-MVI C, COUNT ; Load counter into C
-LOOP: DCR C
-JZ END
-; ... loop body ...
-JMP LOOP
-END: POP B   ; Restore BC pair
-
 
