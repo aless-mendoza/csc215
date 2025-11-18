@@ -36,6 +36,7 @@ Bytes are numbered from 0 to 32 (33 bytes total). Common layout:
 
 - 0 — Drive (1 byte)
 - 1–8 — Filename (8 bytes; space-padded)
+    - there is not `.` seperating the filename
 - 9–11 — File type (3 bytes; space-padded)
 - 12 — Extent number (ex)
 - 13 — System-use byte s1
