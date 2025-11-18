@@ -13,7 +13,13 @@ RBOOT   EQU     0
 BDOS    EQU     5               
 TPA     EQU     100H            
         ORG     TPA             
-START:  LXI     SP,STAK         
+START:  LXI     SP,STAK    
+
+; Storage for nums - like variables
+NUM1:   DW      0
+NUM2:   DW      0
+RESULT: DW      0
+NUMBUF: DS      6
 
 ; Main Program
 START1:
@@ -111,8 +117,10 @@ PRTNUM:
         LXI     D,NUMBUF+5      ; Point to end of buffer (Output digits will be stored in reverse order in NUMBUF)
         MVI     B,0             ; Digit counter (a counter for how many digits are pushed during conversion)
         
-; helpers to PRTNNUM
+; helpers to PRTNNUM (it never returns so it keeps going)
 
+; Extracts and stores digits in reverse order for later printing
+; if you feed in 123 (in hex) it will output 321 in binary
 PRTN1:  
         LXI     D,10            ; load divisor
         CALL    DIVIDE          ; HL/ 10, A = HL%10
@@ -124,7 +132,8 @@ PRTN1:
         ORA     L
         JNZ     PRTN1           ; CONTINUE IF NOT ZERO
         
-; prints digits from stack
+; Prints digits in the correct order
+; this then takes that 321 and flips it to the proper 123
 PRTN2:  
         POP     PSW             ; Get digit
         CALL    CO              ; Print digit
@@ -161,12 +170,6 @@ DIV3:
         POP     D
         POP     B
         RET
-
-; Storage for nums
-NUM1:   DW      0
-NUM2:   DW      0
-RESULT: DW      0
-NUMBUF: DS      6
 
 ; CP/M I/O LIBRARY FUNCTIONS
 ; CONSOLE CHARACTER INTO REGISTER A MASKED TO 7 BITS
@@ -261,3 +264,4 @@ INBUF:  DS      83              ; LINE INPUT BUFFER
 STAK:   DB      0               ; TOP OF STACK
 
         END
+
