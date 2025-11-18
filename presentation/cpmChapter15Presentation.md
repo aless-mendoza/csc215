@@ -34,7 +34,7 @@ the TFCB is filled with the drive and filename before the program even begins ex
 
 Bytes are numbered from 0 to 32 (33 bytes total). Common layout:
 
-## **Byte 0 — `dr` (Drive Number)**
+### **Byte 0 — `dr` (Drive Number)**
 - `0` = use currently selected drive  
 - `1` = A:  
 - `2` = B:  
@@ -43,7 +43,7 @@ When written into the directory, CP/M forces this to `0`.
 
 ---
 
-## **Bytes 1–8 — `f1` to `f8` (Filename)**
+### **Bytes 1–8 — `f1` to `f8` (Filename)**
 - Eight ASCII bytes  
 - If shorter than 8 characters → padded with spaces (`20h`)  
 - Cannot include a period  
@@ -51,7 +51,7 @@ When written into the directory, CP/M forces this to `0`.
 
 ---
 
-## **Bytes 9–11 — `t1` to `t3` (File Type)**
+### **Bytes 9–11 — `t1` to `t3` (File Type)**
 - Three ASCII bytes  
 - Also padded with spaces  
 - `"?"` allowed for wildcard search  
@@ -59,7 +59,7 @@ When written into the directory, CP/M forces this to `0`.
 
 ---
 
-## **Byte 12 — `ex` (Extent Number)**
+### **Byte 12 — `ex` (Extent Number)**
 - Which 16 KB “slice” of the file this FCB describes  
 - Starts at 0  
 - Increases as the file grows past 16 KB  
@@ -67,30 +67,28 @@ When written into the directory, CP/M forces this to `0`.
 
 ---
 
-## **Byte 13 — `s1` (System Byte 1)**
+### **Byte 13 — `s1` (System Byte 1)**
 - Used internally by CP/M  
 - Programmer should not modify  
 - Helps BDOS track file state during find/search operations
 
 ---
 
-## **Byte 14 — `s2` (System Byte 2)**
+### **Byte 14 — `s2` (System Byte 2)**
 - Also internal  
 - Used for extended files  
 - Helps BDOS keep track of extents beyond limit of `ex`
 
 ---
 
-## **Byte 15 — `rc` (Record Count)**
+### **Byte 15 — `rc` (Record Count)**
 - Number of **128-byte records** used *in this extent*  
 - Maximum is 128 records (16 KB) per extent  
 - This is the closest thing CP/M has to a "file size" for this block of the file
 
 ---
 
-# **Bytes 16–31: Disk Allocation Groups (Block Numbers)**
-
-## **Bytes 16–31 — `d0` through `dF`**
+### **Bytes 16–31 — `d0` through `dF`**
 - Sixteen **1-byte allocation group numbers**  
 - Each entry is an **8-bit block number**  
 - Each block = **1 KB** of disk space (8 × 128-byte records)  
@@ -104,9 +102,7 @@ When written into the directory, CP/M forces this to `0`.
 
 ---
 
-# **Byte 32: Current Record**
-
-## **Byte 32 — `cr` (Current Record)**
+### **Byte 32 — `cr` (Current Record)**
 - Used by BDOS for sequential read/write  
 - Tracks position inside the extent  
 - Programmer generally does not modify it manually
