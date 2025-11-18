@@ -55,7 +55,7 @@ A new routine called **SHOFN** is introduced to display:
 - the filename  
 - the file type  
 
-stored in the TFCB.
+stored in the FCB.
 
 It works by:
 
