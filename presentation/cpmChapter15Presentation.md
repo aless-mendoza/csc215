@@ -2,6 +2,14 @@
 
 ## **Understanding the FCB**
 
+CP/M and disk I/O CP/M manages low-level disk storage — tracks and sectors — while presenting files as named abstractions that programs can work with.
+
+Programs access disks through the BDOS entry point at address 5, but many BDOS services require more than a single function code (for example, WCONF or an RBUFF buffer size). Those additional parameters are passed via a File Control Block (FCB), a small RAM structure that describes the file and provides workspace for CP/M. For our purposes we’ll use the transient FCB (TFCB) that CP/M reserves at memory locations 005CH–007CH.
+
+Using the TFCB The TFCB tells CP/M how to locate a file for a disk I/O operation and contains temporary working fields CP/M uses during the operation. When you run a .COM program with a filename on the command line (for example, A:ASM C:FILENAME.TYP), CP/M loads A:ASM.COM into the transient program area (TPA) and automatically populates the TFCB with the filename information before starting the program.
+
+---
+
 CP/M stores all file-access information in a 33-byte structure called the **File Control Block (FCB)**. Because the 8080 registers cannot hold enough data to describe a file, CP/M relies on this RAM block to store:
 
 - drive number  
