@@ -24,6 +24,18 @@ the TFCB is filled with the drive and filename before the program even begins ex
 
 ## **How CP/M Uses the FCB**
 
+Bytes are numbered from 0 to 32 (33 bytes total). Common layout:
+
+- 0 — Drive (1 byte)
+- 1–8 — Filename (8 bytes; space-padded)
+- 9–11 — File type (3 bytes; space-padded)
+- 12 — Extent number (ex)
+- 13 — System-use byte s1
+- 14 — System-use byte s2
+- 15 — Record count (rc)
+- 16–31 — Allocation groups (d0..dF) — 16 bytes (each entry is a group number)
+- 32 — Current record pointer (cr) — usually used as temporary workspace
+
 When a program reads or writes a file, CP/M handles nearly all the complexity:
 
 - Disk space is allocated in **1 KB groups**, each containing eight 128-byte records.  
