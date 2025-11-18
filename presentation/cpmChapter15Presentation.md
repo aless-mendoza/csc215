@@ -60,8 +60,8 @@ stored in the TFCB.
 It works by:
 
 1. Temporarily inserting zero terminators after the filename and type  
-2. Converting the drive number into an ASCII character (`@`, `A`, `B`, etc.) \n
-     2.1 Return the `@` when the output is in the same disk
+2. Converting the drive number into an ASCII character (`@`, `A`, `B`, etc.)
+    - Return the `@` when the output is in the same disk
 3. Printing the drive, name, and type using console routines from CPMIO  
 4. Restoring the original FCB bytes before returning
 
