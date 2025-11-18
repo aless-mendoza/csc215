@@ -34,16 +34,113 @@ the TFCB is filled with the drive and filename before the program even begins ex
 
 Bytes are numbered from 0 to 32 (33 bytes total). Common layout:
 
-- 0 — Drive (1 byte)
-- 1–8 — Filename (8 bytes; space-padded)
-    - there is not `.` seperating the filename
-- 9–11 — File type (3 bytes; space-padded)
-- 12 — Extent number (ex)
-- 13 — System-use byte s1
-- 14 — System-use byte s2
-- 15 — Record count (rc)
-- 16–31 — Allocation groups (d0..dF) — 16 bytes (each entry is a group number)
-- 32 — Current record pointer (cr) — usually used as temporary workspace
+## **Byte 0 — `dr` (Drive Number)**
+- `0` = use currently selected drive  
+- `1` = A:  
+- `2` = B:  
+- etc.  
+When written into the directory, CP/M forces this to `0`.
+
+---
+
+## **Bytes 1–8 — `f1` to `f8` (Filename)**
+- Eight ASCII bytes  
+- If shorter than 8 characters → padded with spaces (`20h`)  
+- Cannot include a period  
+- `"?"` (3Fh) allowed for wildcard search
+
+---
+
+## **Bytes 9–11 — `t1` to `t3` (File Type)**
+- Three ASCII bytes  
+- Also padded with spaces  
+- `"?"` allowed for wildcard search  
+- Stored **without** the dot
+
+---
+
+## **Byte 12 — `ex` (Extent Number)**
+- Which 16 KB “slice” of the file this FCB describes  
+- Starts at 0  
+- Increases as the file grows past 16 KB  
+- Used by CP/M to index multiple directory entries for large files
+
+---
+
+## **Byte 13 — `s1` (System Byte 1)**
+- Used internally by CP/M  
+- Programmer should not modify  
+- Helps BDOS track file state during find/search operations
+
+---
+
+## **Byte 14 — `s2` (System Byte 2)**
+- Also internal  
+- Used for extended files  
+- Helps BDOS keep track of extents beyond limit of `ex`
+
+---
+
+## **Byte 15 — `rc` (Record Count)**
+- Number of **128-byte records** used *in this extent*  
+- Maximum is 128 records (16 KB) per extent  
+- This is the closest thing CP/M has to a "file size" for this block of the file
+
+---
+
+# **Bytes 16–31: Disk Allocation Groups (Block Numbers)**
+
+## **Bytes 16–31 — `d0` through `dF`**
+- Sixteen **1-byte allocation group numbers**  
+- Each entry is an **8-bit block number**  
+- Each block = **1 KB** of disk space (8 × 128-byte records)  
+- Maps where the file’s data is located on disk  
+- CP/M fills these in as the file grows
+
+**Notes:**
+- These DO NOT contain file size  
+- They tell BDOS which 1 KB blocks on the disk hold the data  
+- If fewer than 16 groups are needed, unused entries contain `00h`
+
+---
+
+# **Byte 32: Current Record**
+
+## **Byte 32 — `cr` (Current Record)**
+- Used by BDOS for sequential read/write  
+- Tracks position inside the extent  
+- Programmer generally does not modify it manually
+
+---
+
+# **Quick Visual Layout**
+
+```
+Offset  Meaning
+------  -------------------------------------------
+0       dr      (drive code)
+1-8     f1–f8   (filename)
+9-11    t1–t3   (file type)
+12      ex      (extent)
+13      s1      (system use)
+14      s2      (system use)
+15      rc      (record count)
+16-31   d0–dF   (allocation blocks, 1 KB each)
+32      cr      (current record)
+```
+
+---
+
+# **What Fields You Actually Control**
+
+You only set:
+- `dr`  
+- `f1–f8`  
+- `t1–t3`
+
+CP/M manages the rest:
+- `ex`, `s1`, `s2`, `rc`, `d0–dF`, `cr`
+
 
 When a program reads or writes a file, CP/M handles nearly all the complexity:
 
