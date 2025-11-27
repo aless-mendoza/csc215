@@ -29,8 +29,6 @@ OUTFCB: DB      0
         DB      'OUTPUT  TXT'
         DS      20
 BUFFER: DS      128
-        ORG     100H
-
 
 START:  LXI     SP,STAK         
     ;open input file
@@ -214,5 +212,5 @@ NUM2:   DW      0
 RESULT: DW      0
 TEMPBUF:DS      6
 
-STACK:  DS      64
+STAK:  DS      64
         END
