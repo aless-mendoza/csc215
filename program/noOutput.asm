@@ -150,7 +150,7 @@ SKDONE: RET
 PRTNUM:
         PUSH    D
         PUSH    H
-        LXI     D,NUMBUF+5      ; POINT TO END OF BUFFER
+        LXI     D,TEMPBUF+5      ; POINT TO END OF BUFFER
         MVI     B,0             ; DIGIT COUNTER
         
 PN1:    LXI     D,10            ; DIVISOR
