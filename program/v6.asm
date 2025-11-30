@@ -204,70 +204,74 @@ A2:     XCHG                    ; RESULT TO HL
 ITOATOTMP:
         PUSH    B
         PUSH    D
-        LXI     D,TMPNUM+7
-        MVI     M,0
-        DCX     D
-
-        MOV     A,H
-        ORA     L
-        JNZ     ITOASTART
-        LXI     D,TMPNUM
-        MVI     A,'0'
-        STAX    D
-        INX     D
-        MVI     A,0
-        STAX    D
-        POP     D
-        POP     B
-        RET
-ITOASTART:
-ITOALOOP:
-        PUSH    D
-        LXI     D,0
-        LXI     B,10
-ITOADIV:
+        LXI     B,TMPNUM
+        PUSH    B
+ITOA1:
+        ;DIVIDDE HL BY 10
+        PUSH    B
+        LXI     B,0             ; BC WILL HOLD RESULT
+ITOA2:  
+        MOV     A,H             ; Check high byte first
+        ORA     A
+        JNZ     ITOASUB
         MOV     A,L
-        SUB     C
+        CPI     10
+        JC      ITOA3
+ITOASUB:
+        LXI     D,10
+        MOV     A,L
+        SUB     E
         MOV     L,A
         MOV     A,H
-        SBB     B
+        SBB     D
         MOV     H,A
-        JC      ITOADIVDONE
-        INX     D
-        JMP     ITOADIV
-ITOADIVDONE:
-        DAD     B
 
+        INX     B
+        JMP     ITOA2
+ITOA3:
         MOV     A,L
         ADI     '0'
         POP     D
         STAX    D
-        DCX     D
-
-        XCHG   
-        MOV     H,D
-        MOV     L,E
-        XCHG
-
+        INX     D
         PUSH    D
-        XCHG
+
+        MOV     H,B
+        MOV     L,C
+
         MOV     A,H
         ORA     L
-        XCHG
+
+        POP     B
+        JNZ      ITOA1
+        
+ITOA4:
+        MVI     A,0
+        STAX    B
+
         POP     D
-        JNZ     ITOALOOP
+        DCX     B
+REV1:
+        MOV     A,C
+        SUB     E
+        JC      REV2
+        JZ      REV2
+
+        MOV     A,B
+        CMP     D
+        JC      REV2
+
+        LDAX    D
+        MOV     H,A
+        LDAX    B
+        STAX    D
+        MOV     A,H
+        STAX    B
 
         INX     D
-        LXI     H,TMPNUM
-ITOACOPY:
-        LDAX    D
-        MOV     M,A
-        ORA     A
-        JZ      ITOADONE
-        INX     H
-        INX     D
-        JMP     ITOACOPY
-ITOADONE:
+        DCX     B
+        JMP     REV1
+REV2:
         POP     D
         POP     B
         RET
