@@ -62,10 +62,14 @@ MAIN:   CALL    TWOCR           ; DOUBLE SPACE
         LXI     H,BUFFER
         CALL    READLINE        
         SHLD    NUM1STR            ; SAVE FIRST NUMBER
+        CALL    SPMSG
+        DB      '$',0
 
         ; LINE TWO
         CALL    READLINE
         SHLD    NUM2STR            ; SAVE SECOND NUMBER
+        CALL    SPMSG
+        DB      '$',0
 
         ; CONVERT STR TO INT
         LHLD    NUM1STR
@@ -272,46 +276,63 @@ AL2:
 
 ;READ FILENAME FROM INBUFF
 LOADFCBFROMINPUT:
-        LXI     H,TFCB
-        MVI     M,' '       ;CLEAR FCB
-        INX     H
-        LXI     B,35
-LF1:
-        MVI     M,0
-        INX     H
-        DCX     B
-        MOV     A,B
-        ORA     C
-        JNZ     LF1
-
-        LXI     H,TFCB
-        MVI     M,0
-        INX     H
-
-        ;COPY FILENAME FROM INBUF+2
-        LXI     D,INBUF+2
-        LXI     C,TFCB+1
-COPYLOOP:
-        LDAX    D
+        LXI     H,INBUF+2
+        LXI     D,TFCB+1
+        MVI     C,8
+COPYNAME:
+        MOV     A,M
         ORA     A
-        JZ      COPYDONE
-        CPI     CR
-        JZ      COPYDONE
-        CPI     LF
-        JZ      COPYDONE
+        JZ      PADNAME
         CPI     '.'
         JZ      SKIPDOT
-SKIPDOT:
-        INX     D
-        JMP     COPYLOOP
-COPYDONE:
-        MVI     A,' '
-PADREST:
-        MOV     M,A
+        MOV     A,M
+        STAX    D
         INX     H
+        INX     D
         DCR     C
-        JNZ     PADREST
+        JNZ     COPYNAME
+        JMP     NAMEDONE
+PADNAME:
+        MVI     A,' '
+PADNAMELOOP:
+        STAX    D
+        INX     D
+        DCR     C
+        JNZ     PADNAMELOOP
+NAMEDONE:
+        MOV     A,M
+        CPI     '.'
+        JNZ     STARTEXT
+SKIPDOT:
+        INX     H
+STARTEXT:
+        MVI     C,3
+COPYEXT:
+        MOV     A,M
+        ORA     A
+        JZ      PADEXT
+        CPI     CR
+        JZ      PADEXT
+        CPI     LF
+        JZ      PADEXT
+
+        MOV     A,M
+        STAX    D
+        INX     H
+        INX     D
+        DCR     C
+        JNZ     COPYEXT
+        JMP     EXTDONE
+PADEXT:
+        MVI     A,' '
+PADEXTLOOP:
+        STAX    D
+        INX     D
+        DCR     C
+        JNZ     PADEXTLOOP
+EXTDONE:
         RET
+
 
 ;WRITE OUTBUF TO OUTPUT FILE
 BUILDOUTPUTFILE:
