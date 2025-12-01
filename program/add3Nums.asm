@@ -84,45 +84,44 @@ MAIN:   CALL    TWOCR           ; DOUBLE SPACE
         SHLD    RESULT          ; SAVE RESULT
 
         ; DISPLAY RESULT - BUILDING OUTPUT FILE
+        ;clear outbuf first
+        LXI     H,OUTBUF
+        LXI     D,1024
+CLROUT:
+        MVI     M,0
+        INX     H
+        DCX     D
+        MOV     A,D
+        ORA     E
+        JNZ     CLROUT
+
         LXI     H,OUTBUF
         SHLD    OUTPTR
-        CALL    SPMSG
-        DB      'out',0
 
         ; COPY INPUTTED LINES
         LHLD    NUM1STR
         MOV     D,H
         MOV     E,L
         CALL    APPENDLINE
-        CALL    SPMSG
-        DB      ' - append lines',0
 
         LHLD    NUM2STR
         MOV     D,H
         MOV     E,L
         CALL    APPENDLINE
-        CALL    SPMSG
-        DB      ' - append line 2',0
 
         ; ADD "---" FOR AESTHETICS
         LXI     D,DASHES
         CALL    APPENDLINE
-        CALL    SPMSG
-        DB      ' - format before result',0
 
         ; APPEND RESULTS
         LHLD    RESULT
         CALL    ITOATOTMP
         LXI     D,TMPNUM
         CALL    APPENDLINE
-        CALL    SPMSG
-        DB      ' - append result',0
 
         ;NULL-TERMINATE
         LHLD    OUTPTR
         MVI     M,0
-        CALL    SPMSG
-        DB      ' - before filename prompt',0
 
         ;WRITE OUTPUT FILE
         CALL    SPMSG
@@ -358,22 +357,41 @@ EXTDONE:
 
 ;WRITE OUTBUF TO OUTPUT FILE
 BUILDOUTPUTFILE:
+        LHLD    OUTPTR
+        LXI     D,OUTBUF+128
+
+PADREC:
+        MOV     A,H
+        CMP     D
+        JNZ     PADLOOP
+        MOV     A,L
+        CMP     E
+        JNZ     PADDONE
+PADLOOP:
+        MVI     M,1AH
+        INX     H
+        MOV     A,H
+        CMP     D
+        JNZ     PADLOOP
+        MOV     A,L
+        CMP     E
+        JC      PADLOOP
+PADDONE:
         LXI     H,OUTBUF
         SHLD    NEXT
         LXI     D,TFCB
         MVI     C,MAKEF
         CALL    BDOS
         
-        ;WRITE SINGLE RECORD
         LHLD    NEXT
         XCHG
         MVI     C,SDMAF
         CALL    BDOS
-    
+        
         LXI     D,TFCB
         MVI     C,WRITF
         CALL    BDOS
-        
+
         MVI     C,CLOSF
         LXI     D,TFCB
         CALL    BDOS
