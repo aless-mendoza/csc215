@@ -97,31 +97,43 @@ CLROUT:
 
         LXI     H,OUTBUF
         SHLD    OUTPTR
+        CALL    SPMSG
+        DB      'out',0
 
         ; COPY INPUTTED LINES
         LHLD    NUM1STR
         MOV     D,H
         MOV     E,L
         CALL    APPENDLINE
+        CALL    SPMSG
+        DB      ' - append lines',0
 
         LHLD    NUM2STR
         MOV     D,H
         MOV     E,L
         CALL    APPENDLINE
+        CALL    SPMSG
+        DB      ' - append line 2',0
 
         ; ADD "---" FOR AESTHETICS
         LXI     D,DASHES
         CALL    APPENDLINE
+        CALL    SPMSG
+        DB      ' - format before result',0
 
         ; APPEND RESULTS
         LHLD    RESULT
         CALL    ITOATOTMP
         LXI     D,TMPNUM
         CALL    APPENDLINE
+        CALL    SPMSG
+        DB      ' - append result',0
 
         ;NULL-TERMINATE
         LHLD    OUTPTR
         MVI     M,0
+        CALL    SPMSG
+        DB      ' - before filename prompt',0
 
         ;WRITE OUTPUT FILE
         CALL    SPMSG
