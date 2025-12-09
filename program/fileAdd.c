@@ -1,3 +1,6 @@
+// ADD 3 NUMBERS
+// BY ALESSANDRA AND DYLAN
+
 #include <stdio.h>
 
 int main(argc, argv)
