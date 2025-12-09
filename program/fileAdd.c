@@ -1,5 +1,5 @@
-// ADD 3 NUMBERS
-// BY ALESSANDRA AND DYLAN
+/* ADD 3 NUMBERS
+ BY ALESSANDRA AND DYLAN */
 
 #include <stdio.h>
 
