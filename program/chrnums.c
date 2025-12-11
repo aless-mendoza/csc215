@@ -13,7 +13,6 @@ char* argv[];
         printf("Usage: copy <infile> <outfile>\n");
         return;
     }
-    printf("\nADDING VALUES TO %s...\n\n", argv[2]);
     if ((infp = fopen(argv[1], "r")) == NULL) {
         printf("Can’t open %s\n", argv[1]);
         exit();
