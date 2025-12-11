@@ -8,7 +8,7 @@ char s[];
     int i,j,len;
     char temp;
     len = 0;
-    while (s[len] !=0){
+    while (s[len] !='\0'){
         len++;
     }
     if (len >0 && s[len-1] =='\n'){
