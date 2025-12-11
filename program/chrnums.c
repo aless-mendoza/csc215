@@ -1,14 +1,13 @@
 #include <stdio.h>
 
-#define SEEK_CUR 1
+#define MAXLINE 1024
 
 int main(argc, argv)
 int argc;
 char* argv[];
 {
     FILE *infp, *outfp;
-    int len, c, lineno;
-    char chr;
+    int charnum, c;
     char linbuf[MAXLINE];
     if (argc != 3) {
         printf("Usage: copy <infile> <outfile>\n");
@@ -23,15 +22,12 @@ char* argv[];
         printf("Can’t open %s\n", argv[2]);
         exit();
     }
-    while((c = fgetc(infp)) != EOF) {
-        while (fgets(linbuf, MAXLINE, infp)){
-            if (c == '\n') {
-                fprintf(outfp, "%d: ", len);
-            }
-            fprintf(outfp, "%3d: %s", lineno++, linbuf);
-            len++;
-        }
-
+    while (fgets(linbuf, MAXLINE, infp)) {
+        charnum = 0;
+        for (c = 0; linbuf[c] != '\0'; c++)
+            charnum++;
+        printf("%d: %s", charnum, linbuf);
+        fprintf(outfp, "%d: %s", charnum, linbuf);
     }
 
     fclose(infp);
