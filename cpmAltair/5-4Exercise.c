@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <atoi.h>
-#include <itoa.h>
+/*#include <itoa.h>
+*/
 #include <reverse.h>
 
 #define MAXLINE 1024
@@ -24,11 +25,11 @@ char* argv[];
         exit();
     }
     while (fgets(linbuf, MAXLINE, infp)) {
-        \*
+        /*
         itoa(linbuf);
         printf("---\nITOA: %s", linbuf);
         fprintf(outfp, "---\nITOA: %s", linbuf);
-        *\
+        */
         atoi(linbuf);
         printf("\nATOI: %s", linbuf);
         fprintf(outfp, "\nATOI: %s", linbuf);
