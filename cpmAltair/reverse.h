@@ -1,5 +1,5 @@
 reverse(s)
-char s[];
+char *s;
 {
     int i,j,len;
     char temp;
