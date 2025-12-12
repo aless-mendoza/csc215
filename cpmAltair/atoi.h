@@ -1,11 +1,27 @@
-atoi(s)
-char* s;
+int atoi(s)
+char *s;
 {
-    int i, n;
-    n = 0;
-    for (i = 0; *s >= '0' && *s <= '9'; *s++) {
-      n = 10 * n + *s - '0';
+    char *p;
+    p=s;
+    int n, sign, digit;
+    n=0;
+    sign=1;
+    digit=0;
+
+    if (*p == '+' || *p == '-') {
+        if (*p == '-') sign = -1;
+        p++;
     }
-    n=n+111;
+
+    while (*p >= '0' && *p <= '9') {
+        n = n * 10 + (*p - '0');
+        p++;
+        digit = 1;
+    }
+
+    if (!digit){
+        printf("this isn't a number\n");
+        return 0;
+    }
     return (n) ;
 }
