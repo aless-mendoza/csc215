@@ -1,19 +1,17 @@
 reverse(s)
 char *s;
 {
-    int i,j,len;
-    char temp;
-    len = 0;
-    while (s[len] !=0){
-        len++;
+    char *p, *i, *j, temp;
+    while (*p !=0){
+        *p++;
     }
-    if (len >0 && s[len-1] =='\n'){
-        s[len-1]='\0';
-        len--;
+    if (*p >0 && *(p-1) =='\n'){
+        *(p-1)='\0';
+        *p--;
     }
-    for (i = 0, j = len - 1; i < j; i++, j--) {
-        temp = s[i];
-        s[i] = s[j];
-        s[j] = temp;
+    for (i = s, j = p - 1; i < j; i++, j--) {
+        temp = *i;
+        *i = *j;
+        *j = temp;
     }
 }
