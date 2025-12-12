@@ -20,7 +20,7 @@ char *s;
     }
 
     if (!digit){
-        printf("this isn't a number\n");
+        printf("!THIS ISN'T AN INT!");
         return 0;
     }
     return (n) ;
