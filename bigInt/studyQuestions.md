@@ -1,11 +1,10 @@
 # Study Questions
 
 ## Page 6
-1. What are the largest and smallest integer values in the programming
-environment you use?
+**1. What are the largest and smallest integer values in the programming environment you use?**
+The largest is 32767 and the smallest is 0
 
-
-2. Each BigInt object will need to store the digits that represent the BigInt value. The decision to allow arbitrarily large BigInt values affects the choices for storing digits. Name one method for storing digits that will permit an arbitrary number of digits to be stored. What effect would a limit on the number of digits in a BigInt have in the design of the BigInt class?
+**2. Each BigInt object will need to store the digits that represent the BigInt value. The decision to allow arbitrarily large BigInt values affects the choices for storing digits. Name one method for storing digits that will permit an arbitrary number of digits to be stored. What effect would a limit on the number of digits in a BigInt have in the design of the BigInt class?**
 
 
 3. Based on your knowledge of pencil-and-paper methods for doing arithmetic, what do you think will be the most difficult arithmetic operation (+, *, !) to implement for the BigInt class? Why?
