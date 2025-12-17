@@ -50,7 +50,7 @@ Write the body of operator- assuming that operator+ has been written
 - This is preffered when speed and performance is critical and the inputs are guaranteed to be valid. This is often used in low-level or performance sensitive code
 
 ### 4. Consider another method for handling errors:
-Use an interactive error-handling approach. An error message is displayed to the user who then has the option of (a) correcting the value that caused the error, (b) halting the program, or (c) ignoring the error. \n
+Use an interactive error-handling approach. An error message is displayed to the user who then has the option of (a) correcting the value that caused the error, (b) halting the program, or (c) ignoring the error. /n
 Describe the strengths and weaknesses of this approach.
 
 - **Strength:** User friendly: the user will be able to immediately fix their error. Additionally, this makes the program more robust to invalid inputs and flexible for users
