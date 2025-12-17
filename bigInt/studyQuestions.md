@@ -67,11 +67,11 @@ Describe the strengths and weaknesses of this approach.
 ## Page 17
 ### 1. Why is a char vector used to store digits rather than an int vector? How will a change in the kind of element stored in the vector affect the implementation of all BigInt member functions.
 
-- 
+- Ints are larger than chars so saving larger numbers as a char is smaller than as an int. If the type changes, only the digit access helper functions need to be updates
 
 ### 2. We have chosen an enum for storing the sign of a BigInt. Describe two alternatives or types other than an enum that can be used to represent the sign of a BigInt.
 
-- 
+- the sign of BigInt could also be represented as a boolean value or an int with +1 or -1
 
 ### 3. Write the function GetDigit based on the description and declarations in this section. What kinds of error should you worry about?
 
@@ -79,10 +79,10 @@ Describe the strengths and weaknesses of this approach.
 
 ### 4. Why will it be difficult to write the non-member functions operator == and operator < given the current method for accessing digits using GetDigit? Write the function operator == for positive BigInt values assuming that NumDigits and GetDigit are public member functions.
 
-- 
+- Its difficult because digits are accessed indirectly through helper functions. To compare two BigInt values, the num of digits must be compared first, followed by a digit by figit comparison from the most sig digit to least
 
 ### 5. (optional) Why is the apvector class a much better choice than the built-in array type given the specification of the BigInt class?
 
-- 
+- The apvector class is a better choice because it automatically manages memory, resizes dynamically, and reduces the risk of memory errors
 
 
