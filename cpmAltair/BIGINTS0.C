@@ -27,9 +27,11 @@ struct bigint *num;
     num->negative = (numstr[0] == '-');
     num->numdigits = strlen(numstr) - num->negative;
 
+    printf("\n------------\n");
     printf("first char is %c\n", numstr[0]);
     printf("numstr length is %d\n", strlen(numstr));
     printf("numstr[0] == '-' is %d\n", numstr[0] == '-');
     printf("num->negative is %d\n", num->negative);
     printf("num->numdigits is %d\n", num->numdigits);
+
 }
