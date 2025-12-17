@@ -54,4 +54,22 @@ main() {
     prod = n / m;
     printf("%u / %u = %u\n", n, m, prod);
     printf("\n^Normal Division\n");
+
+    printf("--------------\nTest 4 - Division Part 2\n");
+    n = 1;
+    m = 0;
+    prod = n / m;
+    printf("%u / %u = %u\n", n, m, prod);
+    printf("\n^Doesn't error\n");
+
+    printf("--------------\nTest 5 - Large Division\n");
+    n = 65535;
+    m = 1;
+    prod = n / m;
+    printf("%u / %u = %u\n", n, m, prod);
+    n = 65536;
+    m = 1;
+    prod = n / m;
+    printf("%u / %u = %u\n", n, m, prod);
+    printf("\n^First fine, second is overflow\n");
 }
