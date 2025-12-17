@@ -44,4 +44,14 @@ main() {
     printf("Add 1 to it and we get %u!\n", biggest);
     printf("\n^This has to do with the bytes that identify numbers are negative\n");
 
+    printf("--------------\nTest 3 - Division\n");
+    n = 9;
+    m = 3;
+    prod = n / m;
+    printf("%u / %u = %u\n", n, m, prod);
+    n = 0;
+    m = 1;
+    prod = n / m;
+    printf("%u / %u = %u\n", n, m, prod);
+    printf("\n^Normal Division\n");
 }
