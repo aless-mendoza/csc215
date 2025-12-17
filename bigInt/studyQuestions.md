@@ -20,12 +20,12 @@
 - These are necessary when a class manages dynamic memory or shared resources
 
 ### 7. Consider the headers for operator- and operator+ given below.
-'''
+```
 BigInt operator - (const BigInt & big, int small);
 // postcondition: returns big - small
 BigInt operator + (const BigInt & big, int small);
 // postcondition: returns big + small
-'''
+```
 Write the body of operator- assuming that operator+ has been written
 - ???
 
