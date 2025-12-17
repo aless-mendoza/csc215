@@ -12,14 +12,12 @@ struct bigint {
 int main()
 {
     struct bigint bint1, bint2, bint3;
-    int sum;
     set_bigint("1234567", &bint1);
     printf("bint1.negative is %d\n", bint1.negative);
     printf("bint1.numdigits is %d\n", bint1.numdigits);
     set_bigint("424", &bint2);
     set_bigint("-17", &bint3);
-    sum = &bint2+&bint3;
-    printf("d%", sum);
+    set_bigint("65536", &bint3);
 }
 
 void set_bigint(numstr, num)
