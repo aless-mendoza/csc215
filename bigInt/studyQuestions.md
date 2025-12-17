@@ -2,32 +2,32 @@
 
 ## Page 6
 **1. What are the largest and smallest integer values in the programming environment you use?**
-The largest is 32767 and the smallest is 0
+- The largest is 32767 and the smallest is -32767
 
 **2. Each BigInt object will need to store the digits that represent the BigInt value. The decision to allow arbitrarily large BigInt values affects the choices for storing digits. Name one method for storing digits that will permit an arbitrary number of digits to be stored. What effect would a limit on the number of digits in a BigInt have in the design of the BigInt class?**
+- One method is to used vectors which allow for dynamically sized datat structures (allows # of digits to grow as needed). If a limit on the number of digits were placed on BigInt, the class wouldn't have the ability to hold very large numbers.
 
-
-3. Based on your knowledge of pencil-and-paper methods for doing arithmetic, what do you think will be the most difficult arithmetic operation (+, *, !) to implement for the BigInt class? Why?
-
+3. Based on your knowledge of pencil-and-paper methods for doing arithmetic, what do you think will be the most difficult arithmetic operation (+, *, -) to implement for the BigInt class? Why?
+- I think multiplication would be the most difficult, specifically of multi digit numbers. This is because it's repeated arithmetic, you have to track carried numbers, and the number continually grows.
 
 4. Experiment with the calculator. If you enter abcd1234 when a number is expected, what happens? If you enter 1234abcd is the behavior different? What happens if you enter an operator that’s not one of the three that are implemented?
-
+- When you enter abcd1234, you don't acutally get past a. Instead the calculator reads it as a 0. If you enter 1234abcd, you don't get past the numbers cause it automatically enters. If you put in an incorrect operator, it continually prompts you for another.
 
 5. List as many operations as you can that are performed on integers, but that are not included in the list of BigInt functions and operators above.
-
+- mod, exponent, bitwise
 
 6. (AB only) What implementation decisions would require providing a destructor, a copy constructor, and an assignment operator?
+- These are necessary when a class manages dynamic memory or shared resources
 
-
-7. Consider the headers for operator! and operator+ given below.
+7. Consider the headers for operator- and operator+ given below.
 '''
 BigInt operator - (const BigInt & big, int small);
 // postcondition: returns big - small
 BigInt operator + (const BigInt & big, int small);
 // postcondition: returns big + small
 '''
-Write the body of operator! assuming that operator+ has been written
-
+Write the body of operator- assuming that operator+ has been written
+- ???
 
 ## Page 10
 1. Consider the error handling provided by your C++ system. What does the system do if a file is not present in a call to open? What happens on integer overflow or divide by zero? Determine which method(s) are used and discuss the relative desirability of other options.
