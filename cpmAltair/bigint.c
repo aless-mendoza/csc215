@@ -23,8 +23,10 @@ struct bigint *b;
 struct bigint *res;
 {
     int i, maxd, carry, da, db, s;
+
+    maxd = (a->numdigits > b->numdigits) ? a->numdigits : b->numdigits;
+    res->digits = alloc(maxd + 1);
     carry = 0;
-    res->digits = alloc(maxd + 1); /* possible extra digit for carry */
     for (i = 0; i < maxd; i++) {
         da = (i < a->numdigits) ? (a->digits[i] - '0') : 0;
         db = (i < b->numdigits) ? (b->digits[i] - '0') : 0;
@@ -38,6 +40,8 @@ struct bigint *res;
     } else {
         res->numdigits = maxd;
     }
+
+    res->negative = 0;
 }
 
 char* get_bigint(num)
