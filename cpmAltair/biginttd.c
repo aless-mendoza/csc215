@@ -10,6 +10,11 @@ main() {
         ASSERT_STR(get_bigint(bi), "1234567");
     }
 
+    TEST_CASE("Addition Test"){
+    ASSERT_EQU(7+10, 17);
+    ASSERT_EQU(7+10, 20);
+    }
+
     END_TESTING();
 }
 
