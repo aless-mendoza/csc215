@@ -22,7 +22,7 @@ struct bigint *a;
 struct bigint *b;
 struct bigint *res;
 {
-    int i, maxd, carry, da, db, s, cmp, borrow, dl, ds, diff, nd;
+    int i, maxd, carry, da, db, s;
     carry = 0;
     res->digits = alloc(maxd + 1); /* possible extra digit for carry */
     for (i = 0; i < maxd; i++) {
