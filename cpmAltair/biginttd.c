@@ -11,8 +11,15 @@ main() {
     }
 
     TEST_CASE("Addition Test"){
-    ASSERT_EQU(7+10, 17);
-    ASSERT_EQU(7+10, 20);
+        struct bigint bi1;
+        struct bigint bi2;
+        struct bigint biout;
+
+        set_bigint("1234567", &bi1);
+        set_bigint("7654321", &bi2);
+
+        ASSERT_STR(get_bigint(bi1), "1234567");
+        ASSERT_STR(get_bigint(bi2), "7654321");
     }
 
     END_TESTING();
