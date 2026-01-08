@@ -17,83 +17,26 @@ struct bigint *num;
     }
 }
 
-int compare_mag(a, b)
-struct bigint *a;
-struct bigint *b;
-{
-    int i;
-    if (a->numdigits > b->numdigits) return 1;
-    if (a->numdigits < b->numdigits) return -1;
-    for (i = a->numdigits - 1; i >= 0; i--) {
-        if (a->digits[i] > b->digits[i]) return 1;
-        if (a->digits[i] < b->digits[i]) return -1;
-    }
-    return 0;
-}
-
 void add_bigint(a, b, res)
 struct bigint *a;
 struct bigint *b;
 struct bigint *res;
 {
     int i, maxd, carry, da, db, s, cmp, borrow, dl, ds, diff, nd;
-    /* same sign -> add magnitudes, keep sign */
-    if (a->negative == b->negative) {
-        maxd = (a->numdigits > b->numdigits) ? a->numdigits : b->numdigits;
-        carry = 0;
-        res->digits = alloc(maxd + 1); /* possible extra digit for carry */
-        for (i = 0; i < maxd; i++) {
-            da = (i < a->numdigits) ? (a->digits[i] - '0') : 0;
-            db = (i < b->numdigits) ? (b->digits[i] - '0') : 0;
-            s = da + db + carry;
-            res->digits[i] = '0' + (s % 10);
-            carry = s / 10;
-        }
-        if (carry) {
-            res->digits[maxd] = '0' + carry;
-            res->numdigits = maxd + 1;
-        } else {
-            res->numdigits = maxd;
-        }
-        res->negative = a->negative;
+    carry = 0;
+    res->digits = alloc(maxd + 1); /* possible extra digit for carry */
+    for (i = 0; i < maxd; i++) {
+        da = (i < a->numdigits) ? (a->digits[i] - '0') : 0;
+        db = (i < b->numdigits) ? (b->digits[i] - '0') : 0;
+        s = da + db + carry;
+        res->digits[i] = '0' + (s % 10);
+        carry = s / 10;
+    }
+    if (carry) {
+        res->digits[maxd] = '0' + carry;
+        res->numdigits = maxd + 1;
     } else {
-        /* different signs -> subtraction of magnitudes */
-        cmp = compare_mag(a, b);
-        struct bigint *larger, *smaller;
-        if (cmp == 0) {
-            /* result is zero */
-            res->numdigits = 1;
-            res->digits = alloc(1);
-            res->digits[0] = '0';
-            res->negative = 0;
-            return;
-        } else if (cmp > 0) {
-            larger = a;
-            smaller = b;
-            res->negative = a->negative; /* sign of larger magnitude */
-        } else {
-            larger = b;
-            smaller = a;
-            res->negative = b->negative;
-        }
-        res->digits = alloc(larger->numdigits);
-        borrow = 0;
-        for (i = 0; i < larger->numdigits; i++) {
-            dl = (larger->digits[i] - '0');
-            ds = (i < smaller->numdigits) ? (smaller->digits[i] - '0') : 0;
-            diff = dl - ds - borrow;
-            if (diff < 0) {
-                diff += 10;
-                borrow = 1;
-            } else {
-                borrow = 0;
-            }
-            res->digits[i] = '0' + diff;
-        }
-        /* trim leading zeros from the most-significant side */
-        nd = larger->numdigits;
-        while (nd > 1 && res->digits[nd - 1] == '0') nd--;
-        res->numdigits = nd;
+        res->numdigits = maxd;
     }
 }
 
