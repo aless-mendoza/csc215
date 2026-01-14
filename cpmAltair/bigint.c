@@ -17,26 +17,12 @@ struct bigint *num;
     }
 }
 
-int compare_mag(a, b)
-struct bigint *a;
-struct bigint *b;
-{
-    int i;
-    if (a->numdigits > b->numdigits) return 1;
-    if (a->numdigits < b->numdigits) return -1;
-    for (i = a->numdigits - 1; i >= 0; i--) {
-        if (a->digits[i] > b->digits[i]) return 1;
-        if (a->digits[i] < b->digits[i]) return -1;
-    }
-    return 0;
-}
-
 void add_bigint(a, b, res)
 struct bigint *a;
 struct bigint *b;
 struct bigint *res;
 {
-    int i, maxd, carry, da, db, s, cmp, borrow, dl, ds, diff, nd;
+    int i, maxd, carry, da, db, s;
     /* same sign -> add magnitudes, keep sign */
     if (a->negative == b->negative) {
         maxd = (a->numdigits > b->numdigits) ? a->numdigits : b->numdigits;
@@ -57,8 +43,8 @@ struct bigint *res;
         }
         res->negative = a->negative;
     } else {
+        int cmp, borrow, dl, ds, diff, nd;
         /* different signs -> subtraction of magnitudes */
-        cmp = compare_mag(a, b);
         struct bigint *larger, *smaller;
         if (cmp == 0) {
             /* result is zero */
