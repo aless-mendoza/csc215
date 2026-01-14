@@ -38,8 +38,8 @@ main() {
 
     TEST_CASE("Subtraction Test"){
         /* 1234567 - 9999999 = -8765432 */
-        struct bigint b5;
-        struct bigint b6;
+        struct bigint bi5;
+        struct bigint bi6;
         struct bigint biout3;
 
         set_bigint("1234567", &bi5);
@@ -50,8 +50,8 @@ main() {
         ASSERT_STR(get_bigint(biout3), "-8765432");
 
         /* 987654321 - 123456789 = 864197532 */
-        struct bigint b7;
-        struct bigint b8;
+        struct bigint bi7;
+        struct bigint bi8;
         struct bigint biout4;
 
         set_bigint("987654321", &bi7);
@@ -60,6 +60,7 @@ main() {
         add_bigint(bi7,bi8,biout4);
 
         ASSERT_STR(get_bigint(biout4), "864197532");
+    }
 
     END_TESTING();
 }
