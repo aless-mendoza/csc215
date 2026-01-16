@@ -12,5 +12,14 @@ main() {
       ASSERT(mynode->next == NULL);
   }
 
+  TEST_CASE("print list test"){
+      struct node* yournode;
+      yournode = mknode(42);
+      printf("\n");
+      printf(prnlist(yournode));
+      printf("\n");
+      ASSERT_STR(prnlist(yournode) == "[]");
+  }
+
   END_TESTING();
 }
